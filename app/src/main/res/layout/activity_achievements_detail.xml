@@ -46,7 +46,7 @@
         app:srcCompat="@drawable/profile_white" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgPreview"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
@@ -56,9 +56,9 @@
         app:srcCompat="@drawable/valorant" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerAchievement"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:animateLayoutChanges="false"
@@ -74,5 +74,17 @@
         android:layout_marginTop="24dp"
         android:text="Year"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imgPreview" />
+
+    <TextView
+        android:id="@+id/txtAchievement"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAchievement" />
 </androidx.constraintlayout.widget.ConstraintLayout>
