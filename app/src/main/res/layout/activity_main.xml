@@ -23,10 +23,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnWhoWePlay" />
+        app:layout_constraintTop_toBottomOf="@+id/btnWhatWePlay" />
 
     <Button
-        android:id="@+id/btnWhoWePlay"
+        android:id="@+id/btnWhatWePlay"
         style="@style/Widget.Material3.Button.Icon"
         android:layout_width="180dp"
         android:layout_height="145dp"
