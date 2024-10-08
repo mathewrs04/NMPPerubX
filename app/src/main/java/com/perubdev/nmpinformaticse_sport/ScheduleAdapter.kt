@@ -1,5 +1,6 @@
 package com.perubdev.nmpinformaticse_sport
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,13 @@ class ScheduleAdapter(): RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder
         holder.binding.txtChamp.text = ScheduleData.schedules[position].event
         holder.binding.txtPlace.text = ScheduleData.schedules[position].place
         holder.binding.txtTime.text = ScheduleData.schedules[position].time
+
+
+        holder.binding.btnDetail.setOnClickListener {
+            val intent = Intent(holder.itemView.context, SchedulePageDetail::class.java)
+            intent.putExtra(R.string.schedule_index.toString(), position)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
 

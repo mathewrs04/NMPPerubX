@@ -21,5 +21,17 @@ class SchedulePageDetail : AppCompatActivity() {
         binding.btnNotify.setOnClickListener {
             Toast.makeText(this, "Notification Created", Toast.LENGTH_LONG).show()
         }
+
+        val index = intent.getIntExtra(R.string.schedule_index.toString(), 0)
+        with(ScheduleData.schedules[index]) {
+            binding.txtEvent.setText(event)
+            binding.txtDate.setText(date)
+            binding.txtPlace.setText(place)
+            binding.txtTeam.setText(team)
+            binding.txtDeskripsi.setText(description)
+
+            val imageName = resources.getResourceEntryName(imageId)
+            binding.imgPreview.setImageResource(imageId)
+        }
     }
 }
