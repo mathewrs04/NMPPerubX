@@ -51,7 +51,7 @@
                 android:orientation="horizontal">
 
                 <Space
-                    android:layout_width="70dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
@@ -60,21 +60,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:padding="10dp"
                     android:text="Achievement" />
 
                 <Space
                     android:layout_width="0.1dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.1" />
+                    android:layout_weight="0" />
 
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:padding="10dp"
                     android:text="Teams" />
             </LinearLayout>

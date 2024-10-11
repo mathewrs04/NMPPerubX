@@ -49,7 +49,7 @@ object GameData {
                     PlayerBank("PlayerH", "Medic", R.drawable.vct)
                 ))
             ),
-            R.drawable.vct
+            R.drawable.pgc
         )
     )
 }

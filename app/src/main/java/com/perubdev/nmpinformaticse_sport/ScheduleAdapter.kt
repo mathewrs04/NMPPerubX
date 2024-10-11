@@ -25,7 +25,7 @@ class ScheduleAdapter(): RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder
         holder.binding.imgLogo.setImageResource(ScheduleData.schedules[position].imageId)
         holder.binding.txtChamp.text = ScheduleData.schedules[position].event
         holder.binding.txtPlace.text = ScheduleData.schedules[position].place
-        holder.binding.txtTime.text = ScheduleData.schedules[position].time
+        holder.binding.txtDate.text = ScheduleData.schedules[position].date
 
 
         holder.binding.cardSchedule.setOnClickListener {
