@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".SchedulePageDetail">
 
     <androidx.appcompat.widget.Toolbar
@@ -48,7 +48,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="16dp"
         app:cardBackgroundColor="#FAF4F4"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
@@ -59,7 +61,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
@@ -109,9 +111,9 @@
             <TextView
                 android:id="@+id/txtDeskripsi"
                 android:layout_width="wrap_content"
-                android:layout_height="193dp"
+                android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="@string/descs1"
+                android:text="description"
                 android:textSize="12sp" />
 
             <Button
