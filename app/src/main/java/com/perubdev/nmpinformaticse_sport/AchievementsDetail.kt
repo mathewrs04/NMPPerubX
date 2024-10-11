@@ -15,45 +15,51 @@ class AchievementsDetail : AppCompatActivity() {
         binding = ActivityAchievementsDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Ambil posisi game dari intent
+        val gameIndex = intent.getIntExtra(R.string.achievement_index.toString(), -1)
+
         // Define spinner options
-        val years = arrayOf("All", "2020", "2023", "2024")
+        val years = arrayOf("All", "2020","2021", "2022", "2023", "2024")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, years)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerAchievement.adapter = adapter
 
         // Handle spinner item change
-        binding.spinnerAchievement.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+        binding.spinnerAchievement.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val selectedYear = years[p2]
 
-                // Filter achievements directly on the array
-                val filteredAchievements = if (selectedYear == "All") {
-                    AchievementsData.achievements
-                } else {
-                    AchievementsData.achievements.filter { it.year.toString() == selectedYear }.toTypedArray()
-                }
+                // Menggunakan 'with' untuk memudahkan akses ke atribut
+                with(GameData.games[gameIndex]) {
+                    binding.imgGame.setImageResource(imageId) // Set gambar game
+                    binding.txtGame.setText(game)
 
-                // Group achievements by game
-                val achievementsByGame = filteredAchievements.groupBy { it.game }
+                    // Filter achievements berdasarkan tahun yang dipilih
+                    val filteredAchievements = if (selectedYear == "All") {
+                        achievements // Ambil semua pencapaian untuk game ini
+                    } else {
+                        achievements.filter { it.year.toString() == selectedYear }
+                    }
 
-                // Build the achievement string with numbering
-                val achievementsText = if (filteredAchievements.isNotEmpty()) {
-                    achievementsByGame.map { (game, achievements) ->
-                        "$game:\n" + achievements.mapIndexed { index, achievement ->
-                            "${index + 1}. ${achievement.achivements} - ${achievement.team}"
+                    // Buat string pencapaian dengan nomor
+                    val achievementsText = if (filteredAchievements.isNotEmpty()) {
+                        filteredAchievements.mapIndexed { index, achievement ->
+                            "${index + 1}. ${achievement.achievements} - ${achievement.team}"
                         }.joinToString(separator = "\n")
-                    }.joinToString(separator = "\n\n")
-                } else {
-                    "No achievements available"
-                }
+                    } else {
+                        "No achievements available"
+                    }
 
-                // Update textView with the formatted achievements
-                binding.txtAchievement.text = achievementsText
+                    // Perbarui textView dengan pencapaian yang diformat
+                    binding.txtAchievement.setText(achievementsText)
+                }
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 // Do nothing
             }
         }
+
     }
 }
+

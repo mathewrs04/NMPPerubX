@@ -27,6 +27,7 @@ class SchedulePageDetail : AppCompatActivity() {
             binding.txtEvent.setText(event)
             binding.txtDate.setText(date)
             binding.txtPlace.setText(place)
+            binding.txtTime.setText(time)
             binding.txtTeam.setText(team)
             binding.txtDeskripsi.setText(description)
 
