@@ -23,15 +23,18 @@ class TeamAdapter(): RecyclerView.Adapter<TeamAdapter.TeamViewHolder>() {
 
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
+        val game = GameData.games[position]
         holder.binding.imgPurp.setImageResource(R.drawable.purple)
-        holder.binding.txtTeamName.text = GameData.games[position].teams.toString()
+        val firstTeamName = game.teams[0].name
+        holder.binding.txtTeamName.text = firstTeamName
 
         holder.binding.cardSchedule.setOnClickListener {
-            val intent = Intent(holder.itemView.context, SchedulePageDetail::class.java)
+            val intent = Intent(holder.itemView.context, TeamPageDetail::class.java)
             intent.putExtra(R.string.schedule_index.toString(), position)
             holder.itemView.context.startActivity(intent)
         }
     }
+
 
 
 }
