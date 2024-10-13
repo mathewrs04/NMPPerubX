@@ -6,9 +6,12 @@ object GameData {
             "Valorant",
             "Tactical shooter game.",
             listOf(
-                AchievementsBank("Valorant", "Champion in VCT 2023", 2023, "Team A"),
-                AchievementsBank("Valorant", "Runner-up in VCT 2022", 2022, "Team A"),
-                AchievementsBank("Valorant", "Top 4 in VCT 2021", 2021, "Team A")
+                AchievementsBank("Valorant", "Champion in VCT", 2023, "Team A"),
+                AchievementsBank("Valorant", "Runner-up in VCT", 2022, "Team A"),
+                AchievementsBank("Valorant", "Top 4 in VCT", 2021, "Team B"),
+                AchievementsBank("Valorant", "Champion 1 in VCT", 2024, "Team B"),
+                AchievementsBank("Valorant", "Top 5 3 IN VCT", 2023, "Team A")
+
             ),
             listOf(
                 TeamMemberBank("Team A", listOf(
@@ -32,8 +35,10 @@ object GameData {
             "PUBG",
             "Battle royale game.",
             listOf(
-                AchievementsBank("PUBG", "Champion in PGC 2024", 2024, "Team B"),
-                AchievementsBank("PUBG", "Runner-up in PGC 2023", 2023, "Team B")
+                AchievementsBank("PUBG", "Champion in PGC", 2024, "Team A"),
+                AchievementsBank("PUBG", "Runner-up in PGC", 2023, "Team B"),
+                AchievementsBank("PUBG", "Top 5 in PGC", 2024, "Team A"),
+                AchievementsBank("PUBG", "Top 4 in PGC", 2023, "Team B")
             ),
             listOf(
                 TeamMemberBank("Team B", listOf(

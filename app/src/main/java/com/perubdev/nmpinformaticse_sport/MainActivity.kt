@@ -15,7 +15,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding =ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        ScheduleData.schedules[currentSchedules].schedules
+
+        binding.btnWhatWePlay.setOnClickListener{
+            val intent= Intent(this,WhatWePlay::class.java)
+            startActivity(intent)
+        }
 
         binding.btnWhoWheAre.setOnClickListener {
             val intent = Intent(this, WhoWeAre::class.java)

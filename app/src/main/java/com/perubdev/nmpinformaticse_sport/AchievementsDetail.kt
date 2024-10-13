@@ -29,28 +29,24 @@ class AchievementsDetail : AppCompatActivity() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val selectedYear = years[p2]
 
-                // Menggunakan 'with' untuk memudahkan akses ke atribut
                 with(GameData.games[gameIndex]) {
                     binding.imgGame.setImageResource(imageId) // Set gambar game
                     binding.txtGame.setText(game)
 
-                    // Filter achievements berdasarkan tahun yang dipilih
                     val filteredAchievements = if (selectedYear == "All") {
-                        achievements // Ambil semua pencapaian untuk game ini
+                        achievements
                     } else {
                         achievements.filter { it.year.toString() == selectedYear }
                     }
 
-                    // Buat string pencapaian dengan nomor
                     val achievementsText = if (filteredAchievements.isNotEmpty()) {
                         filteredAchievements.mapIndexed { index, achievement ->
-                            "${index + 1}. ${achievement.achievements} - ${achievement.team}"
+                            "${index + 1}. ${achievement.achievements} ${achievement.year} - ${achievement.team}"
                         }.joinToString(separator = "\n")
                     } else {
                         "No achievements available"
                     }
 
-                    // Perbarui textView dengan pencapaian yang diformat
                     binding.txtAchievement.setText(achievementsText)
                 }
             }
