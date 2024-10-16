@@ -1,20 +1,26 @@
 package com.perubdev.nmpinformaticse_sport
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.perubdev.nmpinformaticse_sport.databinding.ActivityTeamPageDetailBinding
 
 class TeamPageDetail : AppCompatActivity() {
+    private lateinit var binding: ActivityTeamPageDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_team_page_detail)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        binding = ActivityTeamPageDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val gameIndex = intent.getIntExtra(R.string.game_index.toString(), 0)
+        val teamIndex = intent.getIntExtra(R.string.team_index.toString(), 0)
+
+        binding.imgTeamGame.setImageResource(GameData.games[gameIndex].imageId)
+
+
+        binding.recTeamDetail.layoutManager = LinearLayoutManager(this)
+        binding.recTeamDetail.setHasFixedSize(true)
+        binding.recTeamDetail.adapter = TeamDetailAdapter(gameIndex, teamIndex)
     }
 }

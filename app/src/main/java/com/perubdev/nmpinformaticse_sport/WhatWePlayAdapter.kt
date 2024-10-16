@@ -32,6 +32,12 @@ class WhatWePlayAdapter(): RecyclerView.Adapter<WhatWePlayAdapter.WhatWePlayView
             holder.itemView.context.startActivity(intent)
         }
 
+        holder.binding.btnTeam.setOnClickListener {
+            val intent = Intent(holder.itemView.context, TeamPage::class.java)
+            intent.putExtra(R.string.game_index.toString(), position)
+            holder.itemView.context.startActivity(intent)
+        }
+
 
     }
 }

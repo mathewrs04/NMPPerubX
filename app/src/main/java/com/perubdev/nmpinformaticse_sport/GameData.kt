@@ -11,17 +11,16 @@ object GameData {
                 AchievementsBank("Valorant", "Top 4 in VCT", 2021, "Team B"),
                 AchievementsBank("Valorant", "Champion 1 in VCT", 2024, "Team B"),
                 AchievementsBank("Valorant", "Top 5 3 IN VCT", 2023, "Team A")
-
             ),
             listOf(
-                TeamMemberBank("Team A", listOf(
+                TeamBank("Team A", listOf(
                     PlayerBank("Player1", "Duelist", R.drawable.vct),
                     PlayerBank("Player2", "Controller", R.drawable.vct),
                     PlayerBank("Player3", "Sentinel", R.drawable.vct),
                     PlayerBank("Player4", "Initiator", R.drawable.vct),
                     PlayerBank("Player5", "Flex", R.drawable.vct)
                 )),
-                TeamMemberBank("Team B", listOf(
+                TeamBank("Team B", listOf(
                     PlayerBank("Player6", "Duelist", R.drawable.vct),
                     PlayerBank("Player7", "Controller", R.drawable.vct),
                     PlayerBank("Player8", "Sentinel", R.drawable.vct),
@@ -29,7 +28,7 @@ object GameData {
                     PlayerBank("Player10", "Flex", R.drawable.vct)
                 ))
             ),
-            R.drawable.valorant // Gambar untuk Valorant
+            R.drawable.valorant
         ),
         GameBank(
             "PUBG",
@@ -41,13 +40,13 @@ object GameData {
                 AchievementsBank("PUBG", "Top 4 in PGC", 2023, "Team B")
             ),
             listOf(
-                TeamMemberBank("Team B", listOf(
+                TeamBank("Team B", listOf(
                     PlayerBank("PlayerA", "Sniper", R.drawable.vct),
                     PlayerBank("PlayerB", "Assault", R.drawable.vct),
                     PlayerBank("PlayerC", "Support", R.drawable.vct),
                     PlayerBank("PlayerD", "Medic", R.drawable.vct)
                 )),
-                TeamMemberBank("Team C", listOf(
+                TeamBank("Team C", listOf(
                     PlayerBank("PlayerE", "Sniper", R.drawable.vct),
                     PlayerBank("PlayerF", "Assault", R.drawable.vct),
                     PlayerBank("PlayerG", "Support", R.drawable.vct),

@@ -5,5 +5,8 @@
     <string name="descwwa1">We ICNS E-Sports are a passionate and dynamic esports club, excelling in games like Valorant, Dota 2, Mobile Legends: Bang Bang (MLBB), and PUBG Mobile (PUBGM). Built on teamwork, strategy, and skill, we consistently perform at the highest levels, achieving numerous victories and milestones.\n\nOur vision is to become a global esports leader, setting new standards in gameplay and professionalism while fostering a positive and inclusive gaming community. With a strong reputation for excellence and determination, we continue to push boundaries and inspire the next generation of esports talent.\n\n</string>
     <string name="schedule_index">schedule_index</string>
     <string name="achievement_index">achievement_index</string>
+    <string name="game_index">game_index</string>
+    <string name="team_index">team_index</string>
+    <string name="teamdetail_index">teamdetail_index</string>
 
 </resources>

@@ -16,7 +16,7 @@ class AchievementsDetail : AppCompatActivity() {
         setContentView(binding.root)
 
         // Ambil posisi game dari intent
-        val gameIndex = intent.getIntExtra(R.string.achievement_index.toString(), -1)
+        val gameIndex = intent.getIntExtra(R.string.achievement_index.toString(), 0)
 
         // Define spinner options
         val years = arrayOf("All", "2020","2021", "2022", "2023", "2024")

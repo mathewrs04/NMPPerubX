@@ -16,9 +16,14 @@ class TeamPage : AppCompatActivity() {
         binding = ActivityTeamPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Mengambil gameIndex dari Intent
+        val gameIndex = intent.getIntExtra(R.string.game_index.toString(), 0)
+
+        binding.imgTeamGame.setImageResource(GameData.games[gameIndex].imageId)
+
         binding.recTeam.layoutManager = LinearLayoutManager(this)
         binding.recTeam.setHasFixedSize(true)
-        binding.recTeam.adapter = TeamAdapter()
+        binding.recTeam.adapter = TeamAdapter(gameIndex)
     }
 
 }
