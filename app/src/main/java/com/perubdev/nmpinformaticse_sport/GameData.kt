@@ -65,7 +65,7 @@ object GameData {
                 AchievementsBank("PUBG", "CCT Series 3", 2023, "Team B")
             ),
             arrayOf(
-                TeamBank("Team B", arrayOf(
+                TeamBank("Team D", arrayOf(
                     PlayerBank("CEB", "POS 1", R.drawable.player),
                     PlayerBank("WISPER", "POS 2", R.drawable.player),
                     PlayerBank("ARI", "POS 3", R.drawable.player),
@@ -73,7 +73,7 @@ object GameData {
                     PlayerBank("KOZAK", "POS 5", R.drawable.player)
 
                 )),
-                TeamBank("Team C", arrayOf(
+                TeamBank("Team E", arrayOf(
                     PlayerBank("PPSAREL", "POS 1", R.drawable.player),
                     PlayerBank("IZPAH", "POS 2", R.drawable.player),
                     PlayerBank("SOCKSHKA", "POS 3", R.drawable.player),
