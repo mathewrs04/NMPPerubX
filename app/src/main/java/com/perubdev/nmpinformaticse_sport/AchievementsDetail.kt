@@ -36,7 +36,7 @@ class AchievementsDetail : AppCompatActivity() {
                     val filteredAchievements = if (selectedYear == "All") {
                         achievements
                     } else {
-                        achievements.filter { it.year.toString() == selectedYear }
+                        achievements.filter { it.year.toString() == selectedYear }.toTypedArray()
                     }
 
                     val achievementsText = if (filteredAchievements.isNotEmpty()) {
