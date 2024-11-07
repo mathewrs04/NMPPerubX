@@ -15,16 +15,13 @@ class AchievementsDetail : AppCompatActivity() {
         binding = ActivityAchievementsDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Ambil posisi game dari intent
         val gameIndex = intent.getIntExtra(R.string.achievement_index.toString(), 0)
 
-        // Define spinner options
         val years = arrayOf("All", "2020","2021", "2022", "2023", "2024")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, years)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerAchievement.adapter = adapter
 
-        // Handle spinner item change
         binding.spinnerAchievement.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val selectedYear = years[p2]
