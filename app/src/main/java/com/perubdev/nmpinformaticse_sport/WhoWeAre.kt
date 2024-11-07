@@ -37,7 +37,6 @@ class WhoWeAre : AppCompatActivity() {
             binding.btnLike.setBackgroundColor(Color.rgb(128, 0, 128))
             binding.btnLike.setTextColor(Color.WHITE)
 
-
         }
     }
 }

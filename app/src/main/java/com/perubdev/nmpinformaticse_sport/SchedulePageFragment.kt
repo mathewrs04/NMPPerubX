@@ -5,54 +5,52 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.perubdev.nmpinformaticse_sport.databinding.FragmentSchedulePageBinding
+import com.perubdev.nmpinformaticse_sport.databinding.FragmentWhatWePlayBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SchedulePageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
+
+private const val KEY_SCHEDULE = "games PerubX"
 class SchedulePageFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var schedule: ArrayList<ScheduleBank> = ArrayList()
+    private lateinit var binding: FragmentSchedulePageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            schedule   = it.getParcelableArrayList<GameBank>(KEY_SCHEDULE) as ArrayList<ScheduleBank>
         }
+
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_schedule_page, container, false)
+        // Set up binding and initialize RecyclerView here
+        binding = FragmentSchedulePageBinding.inflate(inflater, container, false)
+
+        binding.recSch.layoutManager = LinearLayoutManager(requireContext())
+        binding.recSch.setHasFixedSize(true)
+        binding.recSch.adapter = ScheduleAdapter()
+
+        return binding.root
     }
 
+
+
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SchedulePageFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SchedulePageFragment().apply {
+        fun newInstance(games: ArrayList<GameBank>) =
+            WhatWePlayFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putParcelableArrayList(KEY_SCHEDULE, games)
                 }
             }
     }
