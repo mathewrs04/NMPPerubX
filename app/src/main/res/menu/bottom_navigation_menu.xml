@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ItemWhatWePlay"
+        android:icon="@drawable/game"
+        android:title="What We Play"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/ItemWhoWeAre"
+        android:icon="@drawable/group"
+        android:title="Who We Are"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/ItemOurSchedule"
+        android:icon="@drawable/calender"
+        android:title="Our Schedule"
+        app:showAsAction="always" />
+</menu>
