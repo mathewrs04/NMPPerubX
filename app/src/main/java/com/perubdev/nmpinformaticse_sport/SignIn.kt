@@ -29,8 +29,8 @@ class SignIn : AppCompatActivity() {
 
         // Sign In button click
         binding.btnSignIn.setOnClickListener {
-            val username = binding.txtUsername.text.toString()
-            val password = binding.txtPassword.text.toString()
+            val username = binding.txtInputUsername.text.toString()
+            val password = binding.txtInputPassword.text.toString()
 
             // Perform simple login check (replace with actual validation)
             if (username == "user" && password == "user") {
