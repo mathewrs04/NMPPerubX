@@ -25,7 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="PerubX"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/toolbar3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

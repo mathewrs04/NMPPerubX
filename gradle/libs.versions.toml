@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.0"
+googleMaterial = "1.6.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -15,6 +16,7 @@ viewpager2 = "1.0.0"
 
 [libraries]
 androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
+material-v160 = { module = "com.google.android.material:material", version.ref = "googleMaterial" }
 material-v170 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
