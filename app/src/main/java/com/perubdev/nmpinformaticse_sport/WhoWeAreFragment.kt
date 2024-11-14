@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.perubdev.nmpinformaticse_sport.databinding.ActivityWhoWeAreBinding
+import com.perubdev.nmpinformaticse_sport.databinding.FragmentWhatWePlayBinding
 import com.perubdev.nmpinformaticse_sport.databinding.FragmentWhoWeAreBinding
 
 
@@ -18,7 +19,10 @@ class WhoWeAreFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         arguments?.let {
+
 
         }
     }
@@ -40,8 +44,15 @@ class WhoWeAreFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_who_we_are, container, false)
+        binding = FragmentWhoWeAreBinding.inflate(inflater, container, false)
+
+        binding.btnLike.setOnClickListener {
+            likeCount++
+            updateLikeButtonText()
+            updateLikeButtonColor()
+        }
+
+        return binding.root
     }
 
     companion object {
