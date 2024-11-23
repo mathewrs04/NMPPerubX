@@ -80,13 +80,15 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Achivement"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

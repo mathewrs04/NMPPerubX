@@ -32,7 +32,7 @@ class SignIn : AppCompatActivity() {
             val username = binding.txtInputUsername.text.toString()
             val password = binding.txtInputPassword.text.toString()
 
-            // Perform simple login check (replace with actual validation)
+//             Perform simple login check (replace with actual validation)
             if (username == "user" && password == "user") {
                 // Save login state in SharedPreferences
                 sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
