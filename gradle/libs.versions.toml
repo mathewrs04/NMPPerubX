@@ -14,6 +14,7 @@ materialVersion = "1.7.0"
 picasso = "2.8"
 viewpager2 = "1.0.0"
 volley = "1.2.1"
+firebaseCrashlyticsBuildtools = "3.0.2"
 
 [libraries]
 androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
@@ -29,6 +30,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 volley = { module = "com.android.volley:volley", version.ref = "volley" }
+firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
