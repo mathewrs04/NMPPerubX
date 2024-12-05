@@ -1,6 +1,10 @@
 package com.perubdev.nmpinformaticse_sport
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Team(var idteam: Int,
                 var idgame: Int,
-                var name: String,
-                var img:String)
+                var gameimg: String,
+                var name: String): Parcelable

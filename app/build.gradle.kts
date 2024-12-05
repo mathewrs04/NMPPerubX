@@ -54,4 +54,5 @@ dependencies {
     implementation(libs.androidx.viewpager2)
     implementation(libs.volley)
     implementation(libs.gson)
+    implementation(libs.picasso)
 }

@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.perubdev.nmpinformaticse_sport.databinding.PlayerCardBinding
+import com.squareup.picasso.Picasso
 
-class TeamDetailAdapter(private val gameIndex: Int, private val teamIndex: Int) :
+class TeamDetailAdapter(val teamMembers: ArrayList<TeamMember>) :
     RecyclerView.Adapter<TeamDetailAdapter.TeamDetailViewHolder>() {
 
     class TeamDetailViewHolder(val binding: PlayerCardBinding) :
@@ -20,19 +21,22 @@ class TeamDetailAdapter(private val gameIndex: Int, private val teamIndex: Int) 
     }
 
     override fun getItemCount(): Int {
-        val game = GameData.games[gameIndex]
-        val team = game.teams[teamIndex]
-        return team.members.size
+        return teamMembers.size
     }
 
     override fun onBindViewHolder(holder: TeamDetailViewHolder, position: Int) {
-        val game = GameData.games[gameIndex]
-        val team = game.teams[teamIndex]
+        val url = teamMembers[position].img
 
-        val player = team.members[position]
 
-        holder.binding.imgPlayer.setImageResource(player.profileImageId)
-        holder.binding.txtPlayerName.text = player.name
-        holder.binding.txtRole.text = player.role
+        with(holder.binding) {
+            val builder = Picasso.Builder(holder.itemView.context)
+            builder.listener { picasso, uri, exception -> exception.printStackTrace() }
+            Picasso.get().load(url).into(imgPlayer)
+
+            txtPlayerName.text = teamMembers[position].name
+            txtRole.text = teamMembers[position].description
+        }
+
+
     }
 }
