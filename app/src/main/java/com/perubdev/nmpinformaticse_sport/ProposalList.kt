@@ -9,6 +9,7 @@ import com.perubdev.nmpinformaticse_sport.databinding.ActivityProposalListBindin
 
 class ProposalList : AppCompatActivity() {
     private lateinit var binding: ActivityProposalListBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProposalListBinding.inflate(layoutInflater)

@@ -9,7 +9,7 @@ import com.perubdev.nmpinformaticse_sport.ScheduleAdapter.ScheduleViewHolder
 import com.perubdev.nmpinformaticse_sport.databinding.ProposalListBinding
 import com.perubdev.nmpinformaticse_sport.databinding.SchedulePageCardBinding
 
-class ProposalAdapter(var proposal: ArrayList<String>, val activity: Activity):
+class ProposalAdapter(var proposal: ArrayList<Proposal>):
     RecyclerView.Adapter<ProposalAdapter.ProposalViewHolder>() {
 
     class ProposalViewHolder(val binding: ProposalListBinding):
@@ -27,6 +27,7 @@ class ProposalAdapter(var proposal: ArrayList<String>, val activity: Activity):
     }
 
     override fun onBindViewHolder(holder: ProposalViewHolder, position: Int) {
-
+        holder.binding.txtGame.text = proposal[position].description
+        holder.binding.txtStatus.text = proposal[position].status
     }
 }
