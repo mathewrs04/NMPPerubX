@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,10 +14,12 @@ import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.perubdev.nmpinformaticse_sport.databinding.ActivitySignInBinding
 import org.json.JSONObject
 
 class SignIn : AppCompatActivity() {
+    var member:ArrayList<Member> = ArrayList()
     private lateinit var binding: ActivitySignInBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,32 +64,36 @@ class SignIn : AppCompatActivity() {
             Request.Method.POST,
             url,
             {
-                try {
-                    val obj = JSONObject(it)
-                    if (obj.getString("result") == "OK") {
-                        // Parse user data
-                        val user = Gson().fromJson(obj.getJSONObject("data").toString(), Member::class.java)
+                Log.d("cekparams", it)
 
-                        // Save login state in SharedPreferences
-                        val sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
-                        sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
-                        sharedPreferences.edit().putString("username", user.username).apply()
+                val obj = JSONObject(it)
+                if (obj.getString("result") == "OK") {
+                    val data = obj.getJSONArray("data")
+                    val sType = object : TypeToken<Member>() {}.type
+                    val member = Gson().fromJson<Member>(data.getJSONObject(0).toString(), sType)
 
-                        // Navigate to main activity
-                        navigateToMainActivity()
-                    } else {
-                        Toast.makeText(this, obj.getString("message"), Toast.LENGTH_SHORT).show()
+
+                    // Save login status to SharedPreferences
+                    val sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+                    sharedPreferences.edit().apply {
+                        putBoolean("isLoggedIn", true)
+                        putString("username", member.username)
+                        putInt("idmember", member.idmember)
+                        apply()
                     }
-                } catch (e: Exception) {
-                    Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+
+                    // Navigate to MainActivity
+                    navigateToMainActivity()
+                } else {
+                    Toast.makeText(this, obj.getString("message"), Toast.LENGTH_SHORT).show()
                 }
             },
-            { error ->
-                Toast.makeText(this, "Volley error: ${error.message}", Toast.LENGTH_SHORT).show()
+            {
+                Log.e("cekparams", it.message.toString())
             }
         ) {
-            override fun getParams(): Map<String, String> {
-                val params = HashMap<String, String>()
+            override fun getParams(): MutableMap<String, String> {
+                val params = mutableMapOf<String, String>()
                 params["username"] = username
                 params["password"] = password
                 return params
@@ -95,6 +102,9 @@ class SignIn : AppCompatActivity() {
 
         q.add(stringRequest)
     }
+
+
+
 
     private fun navigateToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)

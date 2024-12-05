@@ -26,37 +26,37 @@ class ApplyTeamNew : AppCompatActivity() {
 
 
 
-        binding.spinnerGame.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                val q = Volley.newRequestQueue()
-                val url = "https://ubaya.xyz/native/160422023/get_game.php"
-
-                var stringRequest = StringRequest(
-                    Request.Method.POST,
-                    url,
-                    {
-                        Log.d("apiresult", it)
-
-                        val obj = JSONObject(it)
-                        if(obj.getString("result") == "OK") {
-                            val data = obj.getJSONArray("data")
-                            val sType = object : TypeToken<List<GameBank>>() { }.type
-                            games = Gson().fromJson(data.toString(), sType) as
-                                    ArrayList<GameBank>
-                            updateList()
-                            Log.d("apiresult", games.toString())}
-                    },
-                    {
-                        Log.e("apiresult", it.message.toString())
-                    }
-                )
+//        binding.spinnerGame.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+//                val q = Volley.newRequestQueue()
+//                val url = "https://ubaya.xyz/native/160422023/get_game.php"
+//
+//                var stringRequest = StringRequest(
+//                    Request.Method.POST,
+//                    url,
+//                    {
+//                        Log.d("apiresult", it)
+//
+//                        val obj = JSONObject(it)
+//                        if(obj.getString("result") == "OK") {
+//                            val data = obj.getJSONArray("data")
+//                            val sType = object : TypeToken<List<GameBank>>() { }.type
+//                            games = Gson().fromJson(data.toString(), sType) as
+//                                    ArrayList<GameBank>
+//                            updateList()
+//                            Log.d("apiresult", games.toString())}
+//                    },
+//                    {
+//                        Log.e("apiresult", it.message.toString())
+//                    }
+//                )
             }
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-
-            }
+//            override fun onNothingSelected(p0: AdapterView<*>?) {
+//
+//            }
 
         }
 
-    }
-}
+    //}
+//}
