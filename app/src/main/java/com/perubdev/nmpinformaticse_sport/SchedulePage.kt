@@ -14,11 +14,5 @@ class SchedulePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySchedulePageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.recSch.layoutManager = LinearLayoutManager(this)
-        binding.recSch.setHasFixedSize(true)
-        binding.recSch.adapter = ScheduleAdapter()
-
-
     }
 }
