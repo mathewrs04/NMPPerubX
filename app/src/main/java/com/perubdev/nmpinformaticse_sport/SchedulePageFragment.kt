@@ -51,12 +51,7 @@ class SchedulePageFragment : Fragment() {
                 Log.e("apiresult", it.message.toString())
             }
         )
-
         sc.add(stringRequest)
-
-
-
-
     }
 
     override fun onCreateView(
