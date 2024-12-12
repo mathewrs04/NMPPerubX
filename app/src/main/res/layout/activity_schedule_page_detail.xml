@@ -110,7 +110,7 @@
                 android:text="TEAM B" />
 
             <TextView
-                android:id="@+id/txtDeskripsi"
+                android:id="@+id/txtDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"

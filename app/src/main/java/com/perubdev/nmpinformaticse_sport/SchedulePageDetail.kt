@@ -29,7 +29,7 @@ class SchedulePageDetail : AppCompatActivity() {
             binding.txtPlace.setText(place)
             binding.txtTime.setText(time)
             binding.txtTeam.setText(team)
-            binding.txtDeskripsi.setText(description)
+            binding.txtDescription.setText(description)
 
             val imageName = resources.getResourceEntryName(imageId)
             binding.imgPreview.setImageResource(imageId)
