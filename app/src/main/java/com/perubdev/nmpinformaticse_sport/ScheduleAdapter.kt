@@ -28,14 +28,14 @@ class ScheduleAdapter(val schedule:ArrayList<Schedule>): RecyclerView.Adapter<Sc
             val builder = Picasso.Builder(holder.itemView.context)
             builder.listener { picasso, uri, exception -> exception.printStackTrace() }
             Picasso.get().load(schUrl).into(imgLogo)
-            txtChamp.text = schedule[position].name
+            txtChamp.text = schedule[position].event_name
             txtDate.text = schedule[position].date
             txtPlace.text = schedule[position].description
         }
 
         holder.binding.cardSchedule.setOnClickListener {
             val intent = Intent(holder.itemView.context, SchedulePageDetail::class.java)
-            intent.putExtra("schedule_index".toString(), position)
+            intent.putExtra("scheduleData", schedule[position])
             holder.itemView.context.startActivity(intent)
         }
     }

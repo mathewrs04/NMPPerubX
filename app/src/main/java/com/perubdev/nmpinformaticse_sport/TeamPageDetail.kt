@@ -40,7 +40,6 @@ class TeamPageDetail : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = TeamDetailAdapter(teamMembers)
         }
-
     }
 
     private fun getTeamMembers(idteam: Int) {

@@ -70,9 +70,6 @@ class WhatWePlayFragment : Fragment() {
     ): View? {
         // Set up binding and initialize RecyclerView here
         binding = FragmentWhatWePlayBinding.inflate(inflater, container, false)
-
-
-
         return binding.root
     }
 
