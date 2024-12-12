@@ -1,6 +1,7 @@
 package com.perubdev.nmpinformaticse_sport
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.perubdev.nmpinformaticse_sport.databinding.ActivityApplyTeamNewBinding
@@ -62,8 +64,15 @@ class ApplyTeamNew : AppCompatActivity() {
                 {
                     val obj = JSONObject(it)
                     if (obj.getString("result") == "OK") {
+                        // Snackbar notification for success
+                        Snackbar.make(binding.root, "Proposal submitted successfully!", Snackbar.LENGTH_SHORT).show()
 
-                        Log.d("apiresult", "Proposal submitted successfully")
+                        // Navigate to ProposalList activity
+                        val intent = Intent(this, ProposalList::class.java)
+                        startActivity(intent)
+                        finish() // Close current activity
+                    } else {
+                        Snackbar.make(binding.root, "Failed to submit proposal.", Snackbar.LENGTH_SHORT).show()
                     }
                 },
                 {

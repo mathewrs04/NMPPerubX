@@ -9,7 +9,7 @@ import com.perubdev.nmpinformaticse_sport.ScheduleAdapter.ScheduleViewHolder
 import com.perubdev.nmpinformaticse_sport.databinding.ProposalListBinding
 import com.perubdev.nmpinformaticse_sport.databinding.SchedulePageCardBinding
 
-class ProposalAdapter(var proposal: ArrayList<Proposal>):
+class ProposalAdapter(var proposals: ArrayList<Proposal>):
     RecyclerView.Adapter<ProposalAdapter.ProposalViewHolder>() {
 
     class ProposalViewHolder(val binding: ProposalListBinding):
@@ -23,11 +23,11 @@ class ProposalAdapter(var proposal: ArrayList<Proposal>):
     }
 
     override fun getItemCount(): Int {
-        return proposal.size
+        return proposals.size
     }
 
     override fun onBindViewHolder(holder: ProposalViewHolder, position: Int) {
-        holder.binding.txtGame.text = proposal[position].description
-        holder.binding.txtStatus.text = proposal[position].status
+        holder.binding.txtGame.text = proposals[position].game
+        holder.binding.txtStatus.text = proposals[position].status
     }
 }
