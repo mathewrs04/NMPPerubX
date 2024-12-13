@@ -57,10 +57,7 @@ class WhatWePlayFragment : Fragment() {
                 Log.e("apiresult", it.message.toString())
             }
         )
-
         q.add(stringRequest)
-
-
     }
 
 
