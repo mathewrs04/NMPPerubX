@@ -28,10 +28,8 @@ class ApplyTeamNew : AppCompatActivity() {
         binding = ActivityApplyTeamNewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Load games when activity starts
         loadGames()
 
-        // Listener for spinnerGame
         binding.spinnerGame.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 if (games.isNotEmpty()) {
@@ -50,11 +48,8 @@ class ApplyTeamNew : AppCompatActivity() {
             val selectedTeam = teams[selectedTeamIndex]
             val description = binding.txtDescription.text.toString()
 
-
-            // Ambil idmember dari SharedPreferences
             val sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
             val idMember = sharedPreferences.getInt("idmember", -1)
-            // Volley request for sending proposal
             val queue = Volley.newRequestQueue(this)
             val url = "https://ubaya.xyz/native/160422023/new_proposal.php"
 
@@ -64,13 +59,10 @@ class ApplyTeamNew : AppCompatActivity() {
                 {
                     val obj = JSONObject(it)
                     if (obj.getString("result") == "OK") {
-                        // Snackbar notification for success
                         Snackbar.make(binding.root, "Proposal submitted successfully!", Snackbar.LENGTH_SHORT).show()
-
-                        // Navigate to ProposalList activity
                         val intent = Intent(this, ProposalList::class.java)
                         startActivity(intent)
-                        finish() // Close current activity
+                        finish()
                     } else {
                         Snackbar.make(binding.root, "Failed to submit proposal.", Snackbar.LENGTH_SHORT).show()
                     }

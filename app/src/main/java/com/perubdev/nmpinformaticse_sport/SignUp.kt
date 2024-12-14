@@ -22,10 +22,8 @@ class SignUp : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Disable the submit button initially
         binding.btnSubmit.isEnabled = false
 
-        // Enable the button only when the checkbox is checked
         binding.checkBox.setOnCheckedChangeListener { _, isChecked ->
             binding.btnSubmit.isEnabled = isChecked
         }

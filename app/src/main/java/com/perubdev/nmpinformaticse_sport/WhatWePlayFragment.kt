@@ -65,7 +65,6 @@ class WhatWePlayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Set up binding and initialize RecyclerView here
         binding = FragmentWhatWePlayBinding.inflate(inflater, container, false)
         return binding.root
     }

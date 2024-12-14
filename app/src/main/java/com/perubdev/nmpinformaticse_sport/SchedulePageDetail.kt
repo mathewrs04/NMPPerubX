@@ -30,8 +30,6 @@ class SchedulePageDetail : AppCompatActivity() {
         // Get schedule data from intent
         val scheduleData = intent.getParcelableExtra<Schedule>("scheduleData")
         if (scheduleData != null) {
-            // Clear old data
-            schedules.clear()
             getScheduleDetail(scheduleData.idevent)
         } else {
             Toast.makeText(this, "No schedule data available", Toast.LENGTH_SHORT).show()
@@ -40,7 +38,7 @@ class SchedulePageDetail : AppCompatActivity() {
 
     private fun getScheduleDetail(idevent: Int) {
         val q = Volley.newRequestQueue(this)
-        val url = "https://ubaya.xyz/native/160422023/get_event.php"
+        val url = "https://ubaya.xyz/native/160422023/get_event_detail.php"
 
         val stringRequest = object : StringRequest(
             Request.Method.POST,
@@ -54,27 +52,15 @@ class SchedulePageDetail : AppCompatActivity() {
                     val sType = object : TypeToken<List<Schedule>>() {}.type
                     schedules = Gson().fromJson(data.toString(), sType) as ArrayList<Schedule>
 
-                    if (schedules.isNotEmpty()) {
-                        val schedule = schedules.find { it.idevent == idevent }
-                        if (schedule != null) {
-                            val imageUrl = schedule.img
-                            if (imageUrl.isNotEmpty()) {
-                                Picasso.get()
-                                    .load(imageUrl)
-                                    .into(binding.imgPreview)
-                            }
-                            binding.txtEvent.text = schedule.event_name
-                            binding.txtDate.text = schedule.date
-                            binding.txtPlace.text = schedule.place
-                            binding.txtTime.text = schedule.time
-                            binding.txtTeam.text = schedule.team_name
-                            binding.txtDescription.text = schedule.description
-                        } else {
-                            Toast.makeText(this, "Event details not found", Toast.LENGTH_SHORT).show()
-                        }
-                    } else {
-                        Toast.makeText(this, "No event details found", Toast.LENGTH_SHORT).show()
-                    }
+                    val schUrl = schedules[0].img
+                    Picasso.get().load(schUrl).into(binding.imgPreview)
+                    binding.txtEvent.text = schedules[0].event_name
+                    binding.txtDate.text = schedules[0].date
+                    binding.txtTime.text = schedules[0].time
+                    binding.txtPlace.text = schedules[0].place
+                    binding.txtTeam.text = schedules[0].team_name
+                    binding.txtDescription.text = schedules[0].description
+
                 } else {
                     Toast.makeText(this, "Failed to fetch event details", Toast.LENGTH_SHORT).show()
                 }

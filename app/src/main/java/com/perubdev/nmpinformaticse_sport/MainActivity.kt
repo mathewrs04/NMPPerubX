@@ -35,18 +35,13 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.itemApply -> {
-                    // Navigate to Apply Team Activity
                     val intent = Intent(this, ProposalList::class.java)
                     startActivity(intent)
                 }
                 R.id.itemSignOut -> {
-                    // Sign out and return to login screen
                     Snackbar.make(binding.root, "Signing out...", Snackbar.LENGTH_SHORT).show()
-
-                    // Clear user session data if any (example: shared preferences)
                     clearSession()
 
-                    // Redirect to Sign-In Activity
                     val intent = Intent(this, SignIn::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
@@ -64,14 +59,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.main.viewPager.adapter = MyAdapter(this, fragments)
 
-        //viewpager
         binding.main.viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 binding.main.bottomNav.selectedItemId = binding.main.bottomNav.menu.getItem(position).itemId
             }
         })
 
-        //bottomnav
         binding.main.bottomNav.setOnItemSelectedListener {
             if(it.itemId == R.id.ItemWhatWePlay){
                 binding.main.viewPager.currentItem = 0
@@ -87,7 +80,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearSession() {
-        // Example of clearing user session (SharedPreferences)
         val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
         sharedPref.edit().clear().apply()
     }

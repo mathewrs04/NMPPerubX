@@ -58,7 +58,6 @@ class SchedulePageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Set up binding and initialize RecyclerView here
         binding = FragmentSchedulePageBinding.inflate(inflater, container, false)
         return binding.root
     }

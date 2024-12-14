@@ -42,7 +42,6 @@ class ProposalList : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        // Ambil idmember dari SharedPreferences
         val sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
         val idMember = sharedPreferences.getInt("idmember", -1)
 

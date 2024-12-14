@@ -27,20 +27,17 @@ class SignIn : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Check if user is already logged in
         val sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
         val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
         if (isLoggedIn) {
             navigateToMainActivity()
-            finish() // Close this activity
+            finish()
         }
 
-        // Sign In button click
         binding.btnSignIn.setOnClickListener {
             val username = binding.txtInputUsername.text.toString()
             val password = binding.txtInputPassword.text.toString()
 
-//             Perform simple login check (replace with actual validation)
             if (username.isNotEmpty() && password.isNotEmpty()) {
                 login(username, password)
             } else {
@@ -50,7 +47,6 @@ class SignIn : AppCompatActivity() {
 
 
         binding.btnSignUp.setOnClickListener {
-            // Navigate to the sign-up page (create SignUpActivity if needed)
             val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
         }
@@ -73,7 +69,6 @@ class SignIn : AppCompatActivity() {
                     val member = Gson().fromJson<Member>(data.getJSONObject(0).toString(), sType)
 
 
-                    // Save login status to SharedPreferences
                     val sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
                     sharedPreferences.edit().apply {
                         putBoolean("isLoggedIn", true)
@@ -82,7 +77,6 @@ class SignIn : AppCompatActivity() {
                         apply()
                     }
 
-                    // Navigate to MainActivity
                     navigateToMainActivity()
                 } else {
                     Toast.makeText(this, obj.getString("message"), Toast.LENGTH_SHORT).show()
