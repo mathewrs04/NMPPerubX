@@ -1,5 +1,6 @@
 package com.perubdev.nmpinformaticse_sport
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -41,10 +42,14 @@ class ProposalList : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
+        // Ambil idmember dari SharedPreferences
+        val sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+        val idMember = sharedPreferences.getInt("idmember", -1)
+
         val q = Volley.newRequestQueue(this)
         val url = "https://ubaya.xyz/native/160422023/get_proposal.php"
 
-        var stringRequest = StringRequest(
+        var stringRequest = object : StringRequest(
             Request.Method.POST,
             url,
             {
@@ -62,7 +67,14 @@ class ProposalList : AppCompatActivity() {
             {
                 Log.e("apiresult", it.message.toString())
             }
-        )
+        ) {
+            override fun getParams(): MutableMap<String, String> {
+                val params = HashMap<String, String>()
+                params["idmember"] = idMember.toString()
+
+                return params
+            }
+        }
 
         q.add(stringRequest)
 

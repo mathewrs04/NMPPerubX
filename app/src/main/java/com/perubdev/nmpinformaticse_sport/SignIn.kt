@@ -48,12 +48,12 @@ class SignIn : AppCompatActivity() {
             }
         }
 
-        // Sign Up button click
-//        binding.btnSignUp.setOnClickListener {
-//            // Navigate to the sign-up page (create SignUpActivity if needed)
-//            val intent = Intent(this, SignUp::class.java)
-//            startActivity(intent)
-//        }
+
+        binding.btnSignUp.setOnClickListener {
+            // Navigate to the sign-up page (create SignUpActivity if needed)
+            val intent = Intent(this, SignUp::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun login(username: String, password: String) {
