@@ -24,6 +24,12 @@ class SignUp : AppCompatActivity() {
 
         binding.btnSubmit.isEnabled = false
 
+        binding.btnBack.setOnClickListener {
+            val intent = Intent(this, SignIn::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         binding.checkBox.setOnCheckedChangeListener { _, isChecked ->
             binding.btnSubmit.isEnabled = isChecked
         }

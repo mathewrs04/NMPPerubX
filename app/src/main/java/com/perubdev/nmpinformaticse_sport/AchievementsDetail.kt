@@ -74,7 +74,7 @@ class AchievementsDetail : AppCompatActivity() {
                         years = listOf("All") + allAchievements
                             .map { it.date }
                             .distinct()
-                            .sorted()
+                            .sortedDescending()
 
 
                         setupSpinner(years)

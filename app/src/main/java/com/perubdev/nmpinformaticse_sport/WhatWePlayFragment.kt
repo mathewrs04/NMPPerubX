@@ -19,7 +19,7 @@ import com.google.gson.reflect.TypeToken
 import com.perubdev.nmpinformaticse_sport.databinding.FragmentWhatWePlayBinding
 import org.json.JSONObject
 
-private const val KEY_GAMES = "games PerubX"
+
 class WhatWePlayFragment : Fragment() {
     private var games: ArrayList<Game> = ArrayList()
     private lateinit var binding: FragmentWhatWePlayBinding
