@@ -1,5 +1,6 @@
 package com.perubdev.nmpinformaticse_sport
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -19,15 +20,30 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding =DrawerLayoutBinding.inflate(layoutInflater)
+
+        val sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+        if (!isLoggedIn) {
+
+            val intent = Intent(this, SignIn::class.java)
+
+            startActivity(intent)
+            finish()
+        }
+
+
+        binding = DrawerLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.main.toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
-        var drawerToggle = ActionBarDrawerToggle(this, binding.root,
-            binding.main.toolbar, R.string.app_name, R.string.app_name)
+        val drawerToggle = ActionBarDrawerToggle(
+            this, binding.root,
+            binding.main.toolbar, R.string.app_name, R.string.app_name
+        )
 
         drawerToggle.isDrawerIndicatorEnabled = true
         drawerToggle.syncState()
@@ -40,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.itemSignOut -> {
                     Snackbar.make(binding.root, "Signing out...", Snackbar.LENGTH_SHORT).show()
+
                     clearSession()
 
                     val intent = Intent(this, SignIn::class.java)
@@ -51,7 +68,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-
         val fragments: ArrayList<Fragment> = ArrayList()
         fragments.add(WhatWePlayFragment())
         fragments.add(WhoWeAreFragment())
@@ -59,25 +75,32 @@ class MainActivity : AppCompatActivity() {
 
         binding.main.viewPager.adapter = MyAdapter(this, fragments)
 
-        binding.main.viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
+        binding.main.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 binding.main.bottomNav.selectedItemId = binding.main.bottomNav.menu.getItem(position).itemId
             }
         })
 
         binding.main.bottomNav.setOnItemSelectedListener {
-            if(it.itemId == R.id.ItemWhatWePlay){
-                binding.main.viewPager.currentItem = 0
-            }
-            else if(it.itemId == R.id.ItemWhoWeAre){
-                binding.main.viewPager.currentItem = 1
-            }
-            else{
-                binding.main.viewPager.currentItem = 2
+            when (it.itemId) {
+                R.id.ItemWhatWePlay -> {
+                    binding.main.viewPager.currentItem = 0
+                    binding.main.toolbar.title = "What We Play"
+                }
+                R.id.ItemWhoWeAre -> {
+                    binding.main.viewPager.currentItem = 1
+                    binding.main.toolbar.title = "Who We Are"
+                }
+                R.id.ItemOurSchedule -> {
+                    binding.main.viewPager.currentItem = 2
+                    binding.main.toolbar.title = "Schedule"
+                }
             }
             true
         }
     }
+
+
 
     private fun clearSession() {
         val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
