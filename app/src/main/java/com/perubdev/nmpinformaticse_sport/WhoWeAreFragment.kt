@@ -35,9 +35,9 @@ class WhoWeAreFragment : Fragment() {
         val stringRequest = StringRequest(
             Request.Method.POST,
             url,
-            { response ->
-                Log.d("apiresult", response)
-                val obj = JSONObject(response)
+            {
+                Log.d("apiresult", it)
+                val obj = JSONObject(it)
                 if (obj.getString("result") == "OK") {
                     val data = obj.getJSONArray("data")
                     val sType = object : TypeToken<List<wwa>>() {}.type
@@ -51,9 +51,9 @@ class WhoWeAreFragment : Fragment() {
                     Toast.makeText(activity, "Failed to fetch data", Toast.LENGTH_SHORT).show()
                 }
             },
-            { error ->
-                Log.e("apiresult", error.message ?: "Error occurred")
-                Toast.makeText(activity, "Failed to connect to server", Toast.LENGTH_SHORT).show()
+            {
+                Log.e("apiresult", it.message.toString())
+
             }
         )
         queue.add(stringRequest)
@@ -64,7 +64,6 @@ class WhoWeAreFragment : Fragment() {
         likeCount = data.likes
         updateLikeButtonText()
         updateLikeButtonColor()
-
 
         Picasso.get().load(data.url)
             .error(R.drawable.venue1)

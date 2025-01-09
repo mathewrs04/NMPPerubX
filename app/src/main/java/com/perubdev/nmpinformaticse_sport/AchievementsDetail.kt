@@ -12,30 +12,32 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.perubdev.nmpinformaticse_sport.databinding.ActivityAchievementsDetailBinding
+import com.squareup.picasso.Picasso
 import org.json.JSONObject
 
 class AchievementsDetail : AppCompatActivity() {
     private lateinit var binding: ActivityAchievementsDetailBinding
     private var allAchievements: List<Achievement> = emptyList()
+    private var years: List<String> = listOf("All")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAchievementsDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val gameId = intent.getIntExtra("game_id", -1)
+        val gameData = intent.getParcelableExtra<Game>("gameData")
 
-        if (gameId == -1) {
-            binding.txtAchievement.text = "Invalid game ID"
-            return
+        if (gameData!= null) {
+            loadAchievements(gameData.idgame)
+            Picasso.get().load(gameData.img).into(binding.imgGame)
+            binding.txtGame.text = gameData.name
         }
 
-        setupSpinner()
-        loadAchievements(gameId)
+
     }
 
-    private fun setupSpinner() {
-        val years = arrayOf("All", "2020", "2021", "2022", "2023", "2024")
+    private fun setupSpinner(years: List<String>) {
+
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, years)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerAchievement.adapter = adapter
@@ -57,9 +59,9 @@ class AchievementsDetail : AppCompatActivity() {
         val stringRequest = object : StringRequest(
             Request.Method.POST,
             url,
-            { response ->
-                try {
-                    val obj = JSONObject(response)
+            {
+
+                    val obj = JSONObject(it)
                     if (obj.getString("result") == "OK") {
                         val data = obj.getJSONArray("data")
                         allAchievements = Gson().fromJson(
@@ -68,18 +70,24 @@ class AchievementsDetail : AppCompatActivity() {
                         )
 
                         Log.d("AchievementsDetail", "Fetched ${allAchievements.size} achievements for gameId $gameId")
+
+                        years = listOf("All") + allAchievements
+                            .map { it.date }
+                            .distinct()
+                            .sorted()
+
+
+                        setupSpinner(years)
+
                         filterAchievements("All")
+
                     } else {
                         binding.txtAchievement.text = "No achievements found"
                     }
-                } catch (e: Exception) {
-                    Log.e("AchievementsDetail", "Error parsing JSON: ${e.message}")
-                    binding.txtAchievement.text = "Error loading achievements"
-                }
+
             },
-            { error ->
-                Log.e("AchievementsDetail", "Volley error: ${error.message}")
-                binding.txtAchievement.text = "Error loading achievements"
+            {
+                Log.e("apiresult", it.message.toString())
             }
         ) {
             override fun getParams(): MutableMap<String, String> {

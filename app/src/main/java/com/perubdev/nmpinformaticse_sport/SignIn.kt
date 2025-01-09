@@ -16,16 +16,21 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.perubdev.nmpinformaticse_sport.databinding.ActivitySignInBinding
+import com.squareup.picasso.Picasso
 import org.json.JSONObject
 
 class SignIn : AppCompatActivity() {
-    var member:ArrayList<Member> = ArrayList()
+
     private lateinit var binding: ActivitySignInBinding
+    private var whoweare: ArrayList<wwa> = ArrayList()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        fetchWhoWeAreData()
 
         val sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
         val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
@@ -97,7 +102,45 @@ class SignIn : AppCompatActivity() {
         q.add(stringRequest)
     }
 
+    private fun fetchWhoWeAreData() {
+        val queue = Volley.newRequestQueue(this)
+        val url = "https://ubaya.xyz/native/160422023/get_whoweare.php"
 
+        val stringRequest = StringRequest(
+            Request.Method.POST,
+            url,
+            {
+                Log.d("apiresult", it)
+                val obj = JSONObject(it)
+                if (obj.getString("result") == "OK") {
+                    val data = obj.getJSONArray("data")
+                    val sType = object : TypeToken<List<wwa>>() {}.type
+                    whoweare = Gson().fromJson(data.toString(), sType) as ArrayList<wwa>
+
+                    if (whoweare.isNotEmpty()) {
+                        val imageUrl = whoweare[0].url
+                        loadLogoImage(imageUrl)
+                    }
+
+                } else {
+                    Toast.makeText(this, "Failed to fetch data", Toast.LENGTH_SHORT).show()
+                }
+            },
+            {
+                Log.e("apiresult", it.message.toString())
+
+            }
+        )
+        queue.add(stringRequest)
+    }
+
+    private fun loadLogoImage(imageUrl: String) {
+        Picasso.get()
+            .load(imageUrl)
+            .placeholder(R.drawable.purple)
+            .error(R.drawable.purple)
+            .into(binding.imgLogo)
+    }
 
 
     private fun navigateToMainActivity() {

@@ -36,9 +36,8 @@ class WhatWePlayAdapter(val games:ArrayList<Game>): RecyclerView.Adapter<WhatWeP
         }
 
         holder.binding.btnAchievements.setOnClickListener {
-            val gameId = games[position].idgame
             val intent = Intent(holder.itemView.context, AchievementsDetail::class.java)
-            intent.putExtra("game_id", gameId)
+            intent.putExtra("gameData", games[position])
             holder.itemView.context.startActivity(intent)
         }
 
