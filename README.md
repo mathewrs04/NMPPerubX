@@ -61,16 +61,6 @@ Follow these steps to set up and run the app on your local machine.
 
 This project was a team effort! A special thank you to all the members for their contributions.
 
-
-
----
-
-### 🙏 Acknowledgments
-
-A big thank you to our lecturer for the guidance and the opportunity to work on this exciting project. It was a great learning experience for the entire team.
-
----
-
-### 📄 License
-
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the `LICENSE` file for more details.
+* [James Edward](https://github.com/jamesedward8)
+* [Mathew Reynald](https://github.com/mathewrs04)
+* [Ryan Subagia](https://github.com/RyanSubagia)
