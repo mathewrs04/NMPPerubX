@@ -14,8 +14,6 @@ This application was created to explore and apply the principles of native mobil
 
 * **Platform-Specific UI:** A user interface designed to adhere to native design guidelines (e.g., Material Design for Android or iOS Human Interface Guidelines).
 * **Smooth Performance:** Leveraging the power of native code for optimal speed and responsiveness.
-* **(Tambahkan Fitur Spesifik di Sini):** Misalnya, User Authentication, Real-time Data Display, dll.
-* **(Tambahkan Fitur Lain):** Contohnya, integrasi API, notifikasi, dll.
 
 ---
 
@@ -23,9 +21,9 @@ This application was created to explore and apply the principles of native mobil
 
 This project was built using the following native technologies:
 
-* **Platform:** (Contoh: Android, iOS, atau keduanya)
-* **Language:** (Contoh: **Kotlin** atau **Java** untuk Android, **Swift** atau **Objective-C** untuk iOS)
-* **IDE:** (Contoh: **Android Studio**, **Xcode**)
+* **Platform:** Android
+* **Language:** **Kotlin**
+* **IDE:**  **Android Studio**
 
 ---
 
